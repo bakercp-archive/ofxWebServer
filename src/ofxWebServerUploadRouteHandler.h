@@ -64,9 +64,12 @@ public:
     void handleRequest(HTTPServerRequest& request, HTTPServerResponse& response);
     void handlePart(const MessageHeader& header, istream& stream);
 
+    virtual bool isContentTypeValid(const string& contentType) const;
+    
     struct Settings {
         
         string uploadFolder;
+        string uploadRedirect;
         
         ofxWebServerBaseRouteHandler::Settings route;
         

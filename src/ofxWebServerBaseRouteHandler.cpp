@@ -4,8 +4,6 @@
 ofxWebServerBaseRouteHandler::Settings::Settings() {
     path = "/";
     
-    documentRoot = "DocumentRoot";
-    
     sessionCookieName = "session";
     
     requireAuthentication = false;
@@ -52,13 +50,13 @@ bool ofxWebServerBaseRouteHandler::isValidRequest(const Settings& settings,
     
     URI uri(request.getURI());
     
-    string path = uri.getPath(); // just get the path
+    const string path = uri.getPath(); // just get the path
 
     if(settings.requireAuthentication) {
         if(request.hasCredentials()) {
             HTTPBasicCredentials credentials(request);
-            const std::string& user = credentials.getUsername();
-            const std::string& pwd = credentials.getPassword();
+            const string& user = credentials.getUsername();
+            const string& pwd = credentials.getPassword();
             
             if(settings.username == credentials.getUsername() &&
                settings.password == credentials.getPassword()) {
@@ -66,10 +64,9 @@ bool ofxWebServerBaseRouteHandler::isValidRequest(const Settings& settings,
                 return true;
             } else {
                 response.setStatusAndReason(HTTPResponse::HTTP_UNAUTHORIZED);
-                sendErrorResponse(settings, response);
+                sendErrorResponse(response);
                 return false;
             }
-            
         } else {
             response.requireAuthentication(settings.realm);
             response.setContentLength(0);
@@ -81,34 +78,20 @@ bool ofxWebServerBaseRouteHandler::isValidRequest(const Settings& settings,
     }
 }
 
-void ofxWebServerBaseRouteHandler::sendErrorResponse(const Settings& settings,
-                                                     HTTPServerResponse& response) {
-    // now check to see if the status was set something other than 200 by an exception
+void ofxWebServerBaseRouteHandler::sendErrorResponse(HTTPServerResponse& response) {
+    // we will assume that the sender has set the status and
+    // reason appropriately before calling the sendErrorResponse()
     
-    if(response.getStatus() == HTTPResponse::HTTP_OK) {
-        response.setStatusAndReason(HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
-        ofLogError("ofxWebServerBaseRouteHandler::sendErrorResponse") << "Error response requested, but no error found. Sending 500.";
-    }
-    
-    HTTPResponse::HTTPStatus responseStatus = response.getStatus();
-    string responseStatusReason = response.getReason();
-    
-    // see if the user has created a file with that error code
-    ofFile errorFile(settings.documentRoot + "/" + ofToString(responseStatus) + "." + "html");
-    if(errorFile.exists()) {
-        response.sendFile(errorFile.getAbsolutePath(),"text/html");
-    } else {
-        response.setContentType("text/html");
-        string statusAndReason = ofToString(responseStatus) + " - " + responseStatusReason;
-        string s;
-        s += "<html>";
-        s += "<head><title>" + statusAndReason + "</title></head>";
-        s += "<body>";
-        s += "<h1>" + statusAndReason + "</h1>";
-        s += "</body>";
-        s += "<html>";
-        std::ostream& ostr = response.send(); // get output stream
-        ostr << s;
-    }
+    HTTPResponse::HTTPStatus status = response.getStatus();
+    string reason = response.getReason();
+    response.setChunkedTransferEncoding(true);
+    response.setContentType("text/html");
+    std::ostream& ostr = response.send(); // get output stream
+    ostr << "<html>";
+    ostr << "<head><title>" << status << "-" << reason << "</title></head>";
+    ostr << "<body>";
+    ostr << "<h1>" << status << "-" << reason << "</h1>";
+    ostr << "</body>";
+    ostr << "<html>";
 }
 

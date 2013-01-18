@@ -43,10 +43,14 @@ public:
     
     void handleRequest(HTTPServerRequest& request, HTTPServerResponse& response);
 
+    
+    virtual void sendErrorResponse(HTTPServerResponse& response);
+    
     struct Settings {
 
         string defaultIndex;
-        
+        string documentRoot;
+                
         ofxWebServerBaseRouteHandler::Settings route;
         Settings();
     };

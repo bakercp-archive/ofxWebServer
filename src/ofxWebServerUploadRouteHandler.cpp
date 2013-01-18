@@ -3,6 +3,7 @@
 //------------------------------------------------------------------------------
 ofxWebServerUploadRouteHandler::Settings::Settings() {
     uploadFolder = "uploads";
+    uploadRedirect = "uploaded.html";
     route.path = "/upload";
 };
 
@@ -10,21 +11,22 @@ ofxWebServerUploadRouteHandler::Settings::Settings() {
 ofxWebServerUploadRouteHandler::ofxWebServerUploadRouteHandler(const Settings& _settings) : settings(_settings) { }
 
 //------------------------------------------------------------------------------
-ofxWebServerUploadRouteHandler::~ofxWebServerUploadRouteHandler() {
-    ofLogVerbose("ofxWebServerUploadRouteHandler::~ofxWebServerUploadRouteHandler") << "Destroyed.";
-}
+ofxWebServerUploadRouteHandler::~ofxWebServerUploadRouteHandler() { }
 
 //------------------------------------------------------------------------------
 void ofxWebServerUploadRouteHandler::handleRequest(HTTPServerRequest& request, HTTPServerResponse& response) {
     if(isValidRequest(settings.route, request, response)) {
-        string path = request.getURI();
-        cout << "content length->" << request.getContentLength() << endl;
-        
         HTMLForm form(request, request.stream(), *this);
         
-        response.setStatusAndReason(HTTPResponse::HTTP_OK);
-        response.setContentLength(0);
-        response.send();
+        if(!settings.uploadRedirect.empty()) {
+            response.redirect(settings.uploadRedirect);
+        } else {
+            response.setStatusAndReason(HTTPResponse::HTTP_OK);
+            response.setContentLength(0);
+            response.send();
+        }
+    } else {
+        return; // isValidRequest took care of the response
     }
 }
 
@@ -40,7 +42,13 @@ void ofxWebServerUploadRouteHandler::handlePart(const MessageHeader& header, std
     
     if(header.has("Content-Type")) {
         string contentType = header["Content-Type"];
-        // check to see if the contentType is valid.
+        if(!isContentTypeValid(contentType)) {
+            ofLogError("ofxWebServerUploadRouteHandler::handlePart") << "Invalid content type: " << contentType;
+            return; // reject
+        }
+    } else {
+        ofLogError("ofxWebServerUploadRouteHandler::handlePart") << "No Content-Type header.";
+        return;
     }
     
     // is this an uploaded file?
@@ -92,3 +100,9 @@ void ofxWebServerUploadRouteHandler::handlePart(const MessageHeader& header, std
     }
     
 }
+
+//------------------------------------------------------------------------------
+bool ofxWebServerUploadRouteHandler::isContentTypeValid(const string& contentType) const {
+    return true;
+}
+

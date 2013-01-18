@@ -3,6 +3,7 @@
 //------------------------------------------------------------------------------
 ofxWebServerDefaultRouteHandler::Settings::Settings() {
     defaultIndex = "index.html";
+    documentRoot = "DocumentRoot";
     route.path   = "/.*"; // regex
     
 }
@@ -27,27 +28,48 @@ void ofxWebServerDefaultRouteHandler::handleRequest(HTTPServerRequest& request,
         
         if(path == "/") { path = "/" + settings.defaultIndex;} // default index
         
-        ofFile file(settings.route.documentRoot + path);
-        string absolutePath = file.getAbsolutePath();
-        string fileExtension = file.getExtension();
-        
+        ofFile file(settings.documentRoot + path); // use it to parse file name parts
+
         try {
-            MediaType mediaType = ofxWebServerGetMimeType(fileExtension);
-            response.sendFile(absolutePath, mediaType.toString());
+            MediaType mediaType = ofxWebServerGetMimeType(file.getExtension());
+            response.sendFile(file.getAbsolutePath(), mediaType.toString());
         } catch (const Poco::FileNotFoundException& ex) {
+            ofLogError("ofxWebServerDefaultRouteHandler::handleRequest") << ex.displayText();
             response.setStatusAndReason(HTTPResponse::HTTP_NOT_FOUND);
-            ofLogError("ofxWebServerDefaultRouteHandler::handleRequest") << ex.displayText();
+            sendErrorResponse(response);
         } catch (const Poco::OpenFileException& ex) {
-            response.setStatusAndReason(HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
             ofLogError("ofxWebServerDefaultRouteHandler::handleRequest") << ex.displayText();
-        } catch (const std::exception& ex) {
             response.setStatusAndReason(HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
+            sendErrorResponse(response);
+        } catch (const std::exception& ex) {
             ofLogError("ofxWebServerDefaultRouteHandler::handleRequest") << "Unknown server error: " << ex.what();
+            response.setStatusAndReason(HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
+            sendErrorResponse(response);
+
         }
-        
-        if(response.getStatus() != HTTPResponse::HTTP_OK) {
-            sendErrorResponse(settings.route,response);
-        }
+    } else {
+        return; // isValidRequest took care of the response
     }
-    
 }
+
+//------------------------------------------------------------------------------
+void ofxWebServerDefaultRouteHandler::sendErrorResponse(HTTPServerResponse& response) {
+    // now check to see if the status was set something other than 200 by an exception
+
+    HTTPResponse::HTTPStatus responseStatus = response.getStatus();
+    // see if we have an html file with that error code
+    ofFile errorFile(settings.documentRoot + "/" + ofToString(responseStatus) + ".html");
+    if(errorFile.exists()) {
+        try {
+            response.sendFile(errorFile.getAbsolutePath(),"text/html");
+        } catch(const FileNotFoundException& exc) {
+            ofxWebServerBaseRouteHandler::sendErrorResponse(response);
+        } catch(const OpenFileException& exc) {
+            ofxWebServerBaseRouteHandler::sendErrorResponse(response);
+        }
+    } else {
+        // we didn't have one in the DocumentRoot, so generate one
+        ofxWebServerBaseRouteHandler::sendErrorResponse(response);
+    }
+}
+

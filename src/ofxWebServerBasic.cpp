@@ -4,7 +4,7 @@
 ofxWebServerBasic::ofxWebServerBasic(unsigned short port, const string& documentRoot) {
     settings.port = port;
     ofxWebServerDefaultRouteHandler::Settings defaultRouteSettings;
-    defaultRouteSettings.route.documentRoot = documentRoot;
+    defaultRouteSettings.documentRoot = documentRoot;
     addRoute(ofxWebServerDefaultRoute::Instance(defaultRouteSettings));
 }
 

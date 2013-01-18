@@ -29,6 +29,7 @@
 #include <string>
 
 #include "Poco/URI.h"
+#include "Poco/Exception.h"
 #include "Poco/Net/HTTPCookie.h"
 #include "Poco/Net/HTTPBasicCredentials.h"
 #include "Poco/Net/HTTPRequestHandler.h"
@@ -45,6 +46,8 @@
 using std::string;
 
 using Poco::URI;
+using Poco::FileNotFoundException;
+using Poco::OpenFileException;
 using Poco::Net::HTTPCookie;
 using Poco::Net::HTTPBasicCredentials;
 using Poco::Net::HTTPResponse;
@@ -68,15 +71,12 @@ public:
                                 HTTPServerRequest& request,
                                 HTTPServerResponse& response);
     
-    virtual void sendErrorResponse(const Settings& settings,
-                                   HTTPServerResponse& response);
+    virtual void sendErrorResponse(HTTPServerResponse& response);
     
     
     
     struct Settings {
         string path;
-        
-        string documentRoot;
         
         string sessionCookieName;
         
@@ -88,5 +88,7 @@ public:
         
         Settings();
     };
+protected:
+    void validateErrorResponse(HTTPServerResponse& response);
     
 };
