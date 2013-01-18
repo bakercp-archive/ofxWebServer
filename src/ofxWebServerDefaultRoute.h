@@ -34,7 +34,6 @@ public:
     ofxWebServerDefaultRoute(const ofxWebServerDefaultRouteHandler::Settings& _settings = ofxWebServerDefaultRouteHandler::Settings() ) {
         ofDirectory documentRootDirectory(settings.documentRoot);
         if(!documentRootDirectory.exists()) {
-            ofLogNotice("ofxWebServerDefaultRoute::ofxWebServerDefaultRoute") << "Document Root directory did not exist.  Creating: " << documentRootDirectory.getAbsolutePath();
             documentRootDirectory.create();
         }
     }

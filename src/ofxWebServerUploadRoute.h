@@ -27,18 +27,35 @@
 #include "ofxWebServerBaseRoute.h"
 #include "ofxWebServerUploadRouteHandler.h"
 
+typedef ofxWebServerUploadRouteHandler::Settings Settings; // to keep the lines shorter.
+
 //------------------------------------------------------------------------------
 class ofxWebServerUploadRoute : public ofxWebServerBaseRoute {
 public:
 
-    ofxWebServerUploadRoute(const ofxWebServerUploadRouteHandler::Settings& _settings);
-    virtual ~ofxWebServerUploadRoute();
-    HTTPRequestHandler* createRequestHandler(const HTTPServerRequest& request);
+    ofxWebServerUploadRoute(const Settings& _settings) {
+        ofDirectory uploadsDirectory(settings.uploadFolder);
+        if(!uploadsDirectory.exists()) {
+            uploadsDirectory.create();
+        }
+    }
+
+    virtual ~ofxWebServerUploadRoute() { }
     
-    static ofxWebServerUploadRoute* Instance(const ofxWebServerUploadRouteHandler::Settings& settings = ofxWebServerUploadRouteHandler::Settings());
+    HTTPRequestHandler* createRequestHandler(const HTTPServerRequest& request) {
+        if(ofxWebServerUploadRouteHandler::matchRoute(URI(request.getURI()), settings.route)) {
+            return new ofxWebServerUploadRouteHandler(settings);
+        } else {
+            return NULL;
+        }
+    }
+    
+    static ofxWebServerUploadRoute* Instance(const Settings& settings = Settings::Settings()) {
+        return new ofxWebServerUploadRoute(settings);
+    }
 
 protected:
-    ofxWebServerUploadRouteHandler::Settings settings;
+    Settings::Settings settings;
     
 };
 

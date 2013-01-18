@@ -30,11 +30,8 @@
 		FDA1F93A16A8FC3D00968B04 /* ofxWebServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F92516A8FC3D00968B04 /* ofxWebServer.cpp */; };
 		FDA1F93B16A8FC3D00968B04 /* ofxWebServerBaseRouteHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F92816A8FC3D00968B04 /* ofxWebServerBaseRouteHandler.cpp */; };
 		FDA1F93D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F92C16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp */; };
-		FDA1F93F16A8FC3D00968B04 /* ofxWebServerRouteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F93116A8FC3D00968B04 /* ofxWebServerRouteManager.cpp */; };
 		FDA1F94016A8FC3D00968B04 /* ofxWebServerSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F93316A8FC3D00968B04 /* ofxWebServerSessionManager.cpp */; };
-		FDA1F94116A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F93516A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp */; };
 		FDA1F94216A8FC3D00968B04 /* ofxWebServerUploadRouteHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F93716A8FC3D00968B04 /* ofxWebServerUploadRouteHandler.cpp */; };
-		FDA1F94516A900BF00968B04 /* ofxWebServerBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F94316A900BE00968B04 /* ofxWebServerBasic.cpp */; };
 		a839a090373f61bf09675a7f16534348 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91f29e33a6360cbdfa25fe748ce69db3 /* testApp.cpp */; };
 /* End PBXBuildFile section */
 
@@ -106,15 +103,12 @@
 		FDA1F92D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerDefaultRouteHandler.h; path = ../src/ofxWebServerDefaultRouteHandler.h; sourceTree = "<group>"; };
 		FDA1F92F16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerFailedRouteHandler.h; path = ../src/ofxWebServerFailedRouteHandler.h; sourceTree = "<group>"; };
 		FDA1F93016A8FC3D00968B04 /* ofxWebServerMimeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerMimeTypes.h; path = ../src/ofxWebServerMimeTypes.h; sourceTree = "<group>"; };
-		FDA1F93116A8FC3D00968B04 /* ofxWebServerRouteManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerRouteManager.cpp; path = ../src/ofxWebServerRouteManager.cpp; sourceTree = "<group>"; };
 		FDA1F93216A8FC3D00968B04 /* ofxWebServerRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerRouteManager.h; path = ../src/ofxWebServerRouteManager.h; sourceTree = "<group>"; };
 		FDA1F93316A8FC3D00968B04 /* ofxWebServerSessionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerSessionManager.cpp; path = ../src/ofxWebServerSessionManager.cpp; sourceTree = "<group>"; };
 		FDA1F93416A8FC3D00968B04 /* ofxWebServerSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerSessionManager.h; path = ../src/ofxWebServerSessionManager.h; sourceTree = "<group>"; };
-		FDA1F93516A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerUploadRoute.cpp; path = ../src/ofxWebServerUploadRoute.cpp; sourceTree = "<group>"; };
 		FDA1F93616A8FC3D00968B04 /* ofxWebServerUploadRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerUploadRoute.h; path = ../src/ofxWebServerUploadRoute.h; sourceTree = "<group>"; };
 		FDA1F93716A8FC3D00968B04 /* ofxWebServerUploadRouteHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerUploadRouteHandler.cpp; path = ../src/ofxWebServerUploadRouteHandler.cpp; sourceTree = "<group>"; };
 		FDA1F93816A8FC3D00968B04 /* ofxWebServerUploadRouteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerUploadRouteHandler.h; path = ../src/ofxWebServerUploadRouteHandler.h; sourceTree = "<group>"; };
-		FDA1F94316A900BE00968B04 /* ofxWebServerBasic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerBasic.cpp; path = ../src/ofxWebServerBasic.cpp; sourceTree = "<group>"; };
 		FDA1F94416A900BF00968B04 /* ofxWebServerBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerBasic.h; path = ../src/ofxWebServerBasic.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +143,6 @@
 		1735791dbc121ec16552b7c3d2cd4d83 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				FDA1F94316A900BE00968B04 /* ofxWebServerBasic.cpp */,
 				FDA1F94416A900BF00968B04 /* ofxWebServerBasic.h */,
 				FDA1F92216A8FC3D00968B04 /* ofxHttpUtils.cpp */,
 				FDA1F92316A8FC3D00968B04 /* ofxHttpUtils.h */,
@@ -164,11 +157,9 @@
 				FDA1F92D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.h */,
 				FDA1F92F16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.h */,
 				FDA1F93016A8FC3D00968B04 /* ofxWebServerMimeTypes.h */,
-				FDA1F93116A8FC3D00968B04 /* ofxWebServerRouteManager.cpp */,
 				FDA1F93216A8FC3D00968B04 /* ofxWebServerRouteManager.h */,
 				FDA1F93316A8FC3D00968B04 /* ofxWebServerSessionManager.cpp */,
 				FDA1F93416A8FC3D00968B04 /* ofxWebServerSessionManager.h */,
-				FDA1F93516A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp */,
 				FDA1F93616A8FC3D00968B04 /* ofxWebServerUploadRoute.h */,
 				FDA1F93716A8FC3D00968B04 /* ofxWebServerUploadRouteHandler.cpp */,
 				FDA1F93816A8FC3D00968B04 /* ofxWebServerUploadRouteHandler.h */,
@@ -361,11 +352,8 @@
 				FDA1F93A16A8FC3D00968B04 /* ofxWebServer.cpp in Sources */,
 				FDA1F93B16A8FC3D00968B04 /* ofxWebServerBaseRouteHandler.cpp in Sources */,
 				FDA1F93D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp in Sources */,
-				FDA1F93F16A8FC3D00968B04 /* ofxWebServerRouteManager.cpp in Sources */,
 				FDA1F94016A8FC3D00968B04 /* ofxWebServerSessionManager.cpp in Sources */,
-				FDA1F94116A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp in Sources */,
 				FDA1F94216A8FC3D00968B04 /* ofxWebServerUploadRouteHandler.cpp in Sources */,
-				FDA1F94516A900BF00968B04 /* ofxWebServerBasic.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
