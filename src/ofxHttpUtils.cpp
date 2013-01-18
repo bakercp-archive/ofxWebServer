@@ -1,13 +1,6 @@
-//
-//  ofHttpUtils.cpp
-//  example
-//
-//  Created by Christopher P. Baker on 1/16/13.
-//
-//
-
 #include "ofxHttpUtils.h"
 
+//------------------------------------------------------------------------------
 NameValueCollection ofGetQueryMap(const URI& uri) {
     NameValueCollection nvc;
     
