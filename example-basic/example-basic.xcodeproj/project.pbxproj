@@ -30,7 +30,6 @@
 		FDA1F93A16A8FC3D00968B04 /* ofxWebServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F92516A8FC3D00968B04 /* ofxWebServer.cpp */; };
 		FDA1F93B16A8FC3D00968B04 /* ofxWebServerBaseRouteHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F92816A8FC3D00968B04 /* ofxWebServerBaseRouteHandler.cpp */; };
 		FDA1F93D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F92C16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp */; };
-		FDA1F93E16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F92E16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.cpp */; };
 		FDA1F93F16A8FC3D00968B04 /* ofxWebServerRouteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F93116A8FC3D00968B04 /* ofxWebServerRouteManager.cpp */; };
 		FDA1F94016A8FC3D00968B04 /* ofxWebServerSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F93316A8FC3D00968B04 /* ofxWebServerSessionManager.cpp */; };
 		FDA1F94116A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDA1F93516A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp */; };
@@ -105,7 +104,6 @@
 		FDA1F92B16A8FC3D00968B04 /* ofxWebServerDefaultRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerDefaultRoute.h; path = ../src/ofxWebServerDefaultRoute.h; sourceTree = "<group>"; };
 		FDA1F92C16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerDefaultRouteHandler.cpp; path = ../src/ofxWebServerDefaultRouteHandler.cpp; sourceTree = "<group>"; };
 		FDA1F92D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerDefaultRouteHandler.h; path = ../src/ofxWebServerDefaultRouteHandler.h; sourceTree = "<group>"; };
-		FDA1F92E16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerFailedRouteHandler.cpp; path = ../src/ofxWebServerFailedRouteHandler.cpp; sourceTree = "<group>"; };
 		FDA1F92F16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerFailedRouteHandler.h; path = ../src/ofxWebServerFailedRouteHandler.h; sourceTree = "<group>"; };
 		FDA1F93016A8FC3D00968B04 /* ofxWebServerMimeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxWebServerMimeTypes.h; path = ../src/ofxWebServerMimeTypes.h; sourceTree = "<group>"; };
 		FDA1F93116A8FC3D00968B04 /* ofxWebServerRouteManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxWebServerRouteManager.cpp; path = ../src/ofxWebServerRouteManager.cpp; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				FDA1F92B16A8FC3D00968B04 /* ofxWebServerDefaultRoute.h */,
 				FDA1F92C16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp */,
 				FDA1F92D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.h */,
-				FDA1F92E16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.cpp */,
 				FDA1F92F16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.h */,
 				FDA1F93016A8FC3D00968B04 /* ofxWebServerMimeTypes.h */,
 				FDA1F93116A8FC3D00968B04 /* ofxWebServerRouteManager.cpp */,
@@ -364,7 +361,6 @@
 				FDA1F93A16A8FC3D00968B04 /* ofxWebServer.cpp in Sources */,
 				FDA1F93B16A8FC3D00968B04 /* ofxWebServerBaseRouteHandler.cpp in Sources */,
 				FDA1F93D16A8FC3D00968B04 /* ofxWebServerDefaultRouteHandler.cpp in Sources */,
-				FDA1F93E16A8FC3D00968B04 /* ofxWebServerFailedRouteHandler.cpp in Sources */,
 				FDA1F93F16A8FC3D00968B04 /* ofxWebServerRouteManager.cpp in Sources */,
 				FDA1F94016A8FC3D00968B04 /* ofxWebServerSessionManager.cpp in Sources */,
 				FDA1F94116A8FC3D00968B04 /* ofxWebServerUploadRoute.cpp in Sources */,
