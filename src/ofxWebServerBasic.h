@@ -30,7 +30,7 @@
 //------------------------------------------------------------------------------
 class ofxWebServerBasic : public ofxWebServer {
 public:
-    ofxWebServerBasic(unsigned short port = 8989, const string& documentRoot = "DocumentRoot") {
+    ofxWebServerBasic(unsigned short port = 8080, const string& documentRoot = "DocumentRoot") {
         settings.port = port;
         ofxWebServerDefaultRouteHandler::Settings defaultRouteSettings;
         defaultRouteSettings.documentRoot = documentRoot;

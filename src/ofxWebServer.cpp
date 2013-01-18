@@ -4,7 +4,7 @@
 ofxWebServer::Settings::Settings() {
     
     host = "http://127.0.0.1";
-    port = 7777;
+    port = 8080;
     
     maxQueued            = 64;
     maxThreads           = 64;
@@ -34,20 +34,24 @@ ofxWebServer::ofxWebServer(Settings _settings) {
 
 //------------------------------------------------------------------------------
 ofxWebServer::~ofxWebServer() {
-    stop();
+    if(server != NULL) {
+        stop();
+    }
     ofLogVerbose("ofxWebServer::~ofxWebServer") << "Server destroyed.";
 }
 
 void ofxWebServer::exit(ofEventArgs& args) {
-    ofLogVerbose("ofxWebServer::exit") << "Waiting for thread cleanup.";
-    
-    stop();
+    ofLogVerbose("ofxWebServer::exit") << "Waiting for serverhrom thread cleanup.";
+
+    if(server != NULL) {
+        stop();
+    }
     // it is ok to unregister an item that is not currently registered
     // POCO's internal loop won't complain or return errors
     // POCO stores the delegates in a std::vector and iterates through
     // deleting and returning on match, and doing nothing on a no-match condition
     ofRemoveListener(ofEvents().exit,this,&ofxWebServer::exit);
-    ofLogVerbose("ofxWebServer::exit") << "Exit.";
+    ofLogVerbose("ofxWebServer::exit") << "Exiting server.";
     
 }
 
