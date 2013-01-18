@@ -35,10 +35,14 @@ using std::string;
 //------------------------------------------------------------------------------
 class ofxWebServerFailedRouteHandler : public ofxWebServerBaseRouteHandler {
 public:
-    ofxWebServerFailedRouteHandler();
+    ofxWebServerFailedRouteHandler() { }
     
-    virtual ~ofxWebServerFailedRouteHandler();
+    virtual ~ofxWebServerFailedRouteHandler() { }
     
-    void handleRequest(HTTPServerRequest& request, HTTPServerResponse& response);
+    void handleRequest(HTTPServerRequest& request, HTTPServerResponse& response) {
+        response.setStatus(HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
+        response.setReason("There were no request handlers defined for ofxWebServer.");
+        sendErrorResponse(response);
+    }
 };
 
