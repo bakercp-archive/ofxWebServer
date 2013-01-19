@@ -13,7 +13,7 @@ void testApp::setup() {
 
     logo.loadImage("DocumentRoot/img/openFrameworks.png");
     
-    server = new ofxWebServerBasic(8989,"DocumentRoot");
+    server = new ofxWebServerBasic(8080,"DocumentRoot");
     server->start();
 
     ofLaunchBrowser(server->getURL());
