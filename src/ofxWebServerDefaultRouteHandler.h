@@ -43,7 +43,6 @@ public:
     
     void handleRequest(HTTPServerRequest& request, HTTPServerResponse& response);
 
-    
     virtual void sendErrorResponse(HTTPServerResponse& response);
     
     struct Settings {

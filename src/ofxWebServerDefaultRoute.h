@@ -27,11 +27,13 @@
 #include "ofxWebServerBaseRoute.h"
 #include "ofxWebServerDefaultRouteHandler.h"
 
+typedef ofxWebServerDefaultRouteHandler::Settings Settings;
+
 //------------------------------------------------------------------------------
 class ofxWebServerDefaultRoute : public ofxWebServerBaseRoute {
 public:
     
-    ofxWebServerDefaultRoute(const ofxWebServerDefaultRouteHandler::Settings& _settings = ofxWebServerDefaultRouteHandler::Settings() ) {
+    ofxWebServerDefaultRoute(const Settings& _settings) : settings(_settings) {
         ofDirectory documentRootDirectory(settings.documentRoot);
         if(!documentRootDirectory.exists()) {
             documentRootDirectory.create();
@@ -47,13 +49,13 @@ public:
         }
     }
 
-    static ofPtr<ofxWebServerDefaultRoute> Instance(const ofxWebServerDefaultRouteHandler::Settings& settings = ofxWebServerDefaultRouteHandler::Settings()) {
+    static ofPtr<ofxWebServerDefaultRoute> Instance(const Settings& settings = Settings()) {
         return ofPtr<ofxWebServerDefaultRoute>(new ofxWebServerDefaultRoute(settings));
     }
     
 protected:
     
-    ofxWebServerDefaultRouteHandler::Settings settings;
+    Settings settings;
     
 };
 
