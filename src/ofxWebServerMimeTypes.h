@@ -1674,8 +1674,8 @@ static map<string, vector<string> > createFileTypeMap(const string& unparsedMime
         string line = buffer.getNextLine();
         if(line.empty() || line[0] == '#') continue;
         
-        int i = tabEater.subst(line, "\t"); // collapse tabs
-        
+        tabEater.subst(line, "\t"); // collapse tabs
+                
         vector<string> tokens = ofSplitString(line,"\t");
         
         if(tokens.size() == 2 && !tokens[0].empty() && !tokens[1].empty()) {
