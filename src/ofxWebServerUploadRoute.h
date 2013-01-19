@@ -33,7 +33,7 @@ typedef ofxWebServerUploadRouteHandler::Settings Settings; // to keep the lines 
 class ofxWebServerUploadRoute : public ofxWebServerBaseRoute {
 public:
 
-    ofxWebServerUploadRoute(const Settings& _settings) {
+    ofxWebServerUploadRoute(const Settings& _settings) : settings(_settings) {
         ofDirectory uploadsDirectory(settings.uploadFolder);
         if(!uploadsDirectory.exists()) {
             uploadsDirectory.create();
@@ -50,8 +50,8 @@ public:
         }
     }
     
-    static ofxWebServerUploadRoute* Instance(const Settings& settings = Settings::Settings()) {
-        return new ofxWebServerUploadRoute(settings);
+    static ofPtr<ofxWebServerUploadRoute> Instance(const Settings& settings = Settings::Settings()) {
+        return ofPtr<ofxWebServerUploadRoute>(new ofxWebServerUploadRoute(settings));
     }
 
 protected:

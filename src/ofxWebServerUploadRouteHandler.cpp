@@ -103,6 +103,7 @@ void ofxWebServerUploadRouteHandler::handlePart(const MessageHeader& header, std
 
 //------------------------------------------------------------------------------
 bool ofxWebServerUploadRouteHandler::isContentTypeValid(const string& contentType) const {
+    // default true
     return true;
 }
 
